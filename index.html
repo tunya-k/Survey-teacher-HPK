@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบสำรวจความสนใจเข้ารับการอบรม - โรงเรียนฮอดพิทยาคม</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f0f4f8; /* Subtle light blue-gray background */
+            color: #333333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            background-color: #FFFFFF;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            border-top: 6px solid #00695C; /* A deeper, more sophisticated green */
+        }
+
+        .school-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+            gap: 20px; /* Space between logo and text */
+        }
+
+        .school-logo {
+            max-height: 90px;
+            flex-shrink: 0; /* Prevent logo from shrinking */
+        }
+
+        .school-name-container {
+            text-align: left;
+        }
+
+        .school-name-container h1 {
+            color: #004D40; /* Darker green for school name */
+            font-size: 1.9em;
+            margin: 0;
+            font-weight: 700;
+        }
+        .school-name-container p {
+            font-size: 1em;
+            color: #455A64; /* Slightly muted text color */
+            margin: 5px 0 0 0;
+        }
+
+        .form-title h2 {
+            color: #00695C;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+        .form-title p.subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #004D40;
+            margin-top:0;
+            margin-bottom:25px;
+            font-weight:500;
+        }
+
+        h3.section-title {
+            color: #00695C;
+            text-align: left;
+            border-bottom: 2px solid #00695C;
+            padding-bottom: 10px;
+            margin-top: 35px;
+            margin-bottom: 25px;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+        .section-title .emoji {
+            margin-right: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #37474F; /* Darker label color */
+            font-size: 0.95em;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%; /* Full width with box-sizing */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #B0BEC5; /* Softer border color */
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+            font-family: 'Sarabun', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #00796B;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.15);
+        }
+
+        button {
+            background-color: #00796B;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 500;
+            margin-right: 12px;
+            transition: background-color 0.2s ease-in-out, transform 0.1s;
+            font-family: 'Sarabun', sans-serif;
+        }
+        button:hover {
+            background-color: #00573F;
+            transform: translateY(-1px);
+        }
+        button:disabled {
+            background-color: #9E9E9E;
+            cursor: not-allowed;
+        }
+
+        button#clearButton {
+            background-color: #ECEFF1; /* Light gray for clear button */
+            color: #37474F;
+        }
+        button#clearButton:hover {
+            background-color: #CFD8DC;
+        }
+
+        .required {
+            color: #C62828; /* More visible red */
+            font-weight: normal;
+            margin-left: 2px;
+        }
+
+        .course-details {
+            background-color: #E0F2F1; /* Very light teal background */
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #00796B;
+        }
+        .course-details h3 {
+            color: #00695C;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size:1.4em;
+        }
+        .course-details strong {
+            color: #004D40;
+        }
+        .course-details ul {
+            padding-left: 25px;
+            list-style-type: '✓ '; /* Custom list bullet */
+        }
+        .course-details li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        .course-details .highlight-box {
+            border: 1px solid #00796B;
+            padding: 18px;
+            background-color: #FFFFFF;
+            border-radius: 6px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .course-details .highlight-box strong.deadline {
+            color: #D32F2F;
+            font-weight: 700;
+        }
+        .course-details .poster-image {
+            max-width: 100%;
+            max-height:450px; /* Limit poster height */
+            object-fit: contain;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+            margin: 10px auto 20px auto;
+            border: 1px solid #B2DFDB; /* Soft border for poster */
+        }
+
+        #recordTableContainer {
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #CFD8DC; /* Lighter table borders */
+            padding: 14px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        th {
+            background-color: #00695C;
+            color: white;
+            font-weight: 500;
+            font-size:0.95em;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .action-buttons button {
+            margin-right: 6px;
+            padding: 7px 12px;
+            font-size: 0.8em; /* Smaller buttons in table */
+        }
+        .action-buttons .edit-btn { background-color: #FF8F00; /* Amber */ }
+        .action-buttons .edit-btn:hover { background-color: #FF6F00; }
+        .action-buttons .delete-btn { background-color: #D32F2F; /* Red */ }
+        .action-buttons .delete-btn:hover { background-color: #B71C1C; }
+
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(3px);
+        }
+        .modal-content {
+            background-color: #fefefe; margin: 12% auto; padding: 25px 30px; border: 1px solid #BDBDBD;
+            width: 90%; max-width: 480px; border-radius: 8px; text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25); animation: fadeInModal 0.3s ease-out;
+        }
+        @keyframes fadeInModal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-content h2 { font-size: 1.5em; margin-bottom:18px; color: #333; }
+        .modal-content p { font-size: 1.05em; margin-bottom:25px; color: #424242; }
+        .close-button {
+            color: #757575; float: right; font-size: 30px; font-weight: bold; transition: color 0.2s;
+        }
+        .close-button:hover, .close-button:focus { color: #212121; text-decoration: none; cursor: pointer; }
+        .modal-buttons button { margin: 0 10px; }
+
+        #statusMessage {
+            font-weight: 500; margin-top: 25px; padding: 14px 18px; border-radius: 6px;
+            display: none; text-align: center; font-size:0.95em; animation: fadeInStatus 0.5s;
+        }
+        @keyframes fadeInStatus { from { opacity: 0; } to { opacity: 1; } }
+        #statusMessage.success { color: #1B5E20; background-color: #C8E6C9; border: 1px solid #A5D6A7; display: block; }
+        #statusMessage.error { color: #B71C1C; background-color: #FFCDD2; border: 1px solid #EF9A9A; display: block; }
+        #statusMessage.loading { color: #0D47A1; background-color: #BBDEFB; border: 1px solid #90CAF9; display: block; }
+
+        .form-footer {
+            text-align: center; margin-top: 40px; padding: 25px;
+            border-top: 1px solid #e0e0e0; color: #455A64; font-size: 0.9em;
+            background-color: #E8F5E9; /* Light green footer background */
+            /* background-image: url('URL_พื้นหลังท้ายฟอร์ม_ถ้ามี.png'); */
+            background-size: cover; background-position: center; border-radius: 0 0 8px 8px;
+        }
+        .form-footer p { margin: 6px 0; font-weight:500; }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container { margin: 20px; padding: 20px 25px; }
+            .school-header { flex-direction: column; text-align: center; gap: 15px; }
+            .school-logo { margin-right: 0; max-height: 70px; }
+            .school-name-container h1 { font-size: 1.6em; }
+            .form-title h2 { font-size:1.4em; }
+            .form-title p.subtitle { font-size:1.1em; }
+            button { width: 100%; margin-bottom: 10px; margin-right:0; }
+            .action-buttons button { width: auto; margin-bottom: 5px; }
+            .modal-content { margin: 20% auto; padding:20px; }
+        }
+         @media (max-width: 480px) {
+            .school-name-container h1 { font-size: 1.4em; }
+            .course-details { padding: 15px; }
+            th, td { padding:10px; font-size:0.85em; }
+         }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="school-header">
+            <img src="http://1.179.159.163/stdhpk/login/images/logo.png" alt="ตราสัญลักษณ์โรงเรียนฮอดพิทยาคม" class="school-logo">
+            <div class="school-name-container">
+                <h1>โรงเรียนฮอดพิทยาคม</h1>
+                <p>สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาเชียงใหม่</p>
+            </div>
+        </header>
+
+        <div class="form-title">
+            <h2>แบบสำรวจความสนใจเข้ารับการอบรมเชิงปฏิบัติการ</h2>
+            <p class="subtitle">หลักสูตร: "ผู้ดำเนินการคัดกรองคนพิการทางการศึกษา"</p>
+        </div>
+
+        <section class="course-details">
+            <h3><span class="emoji">📜</span>รายละเอียดหลักสูตร</h3>
+            <img src="https://www.lampangsec.go.th/images/Image%20Modules/Posterxbrm%20khad%20krxng5.png" alt="โปสเตอร์ประชาสัมพันธ์การอบรม" class="poster-image">
+
+            <p>เป็นการอบรมเชิงปฏิบัติการ เพื่อสร้างความรู้ ความเข้าใจ เกี่ยวกับการคัดกรองคนพิการ และเสริมสร้างศักยภาพผู้ปฏิบัติงานให้มีประสิทธิภาพและสอดคล้องกับแนวทางการให้บริการและการส่งเสริมสิทธิคนพิการตามกฎหมาย</p>
+
+            <p><strong><span class="emoji">🎯</span>วัตถุประสงค์:</strong></p>
+            <ul>
+                <li>เพื่อให้ผู้เข้ารับการอบรมมีความรู้ความเข้าใจเกี่ยวกับการคัดกรองคนพิการทางการศึกษา</li>
+                <li>เพื่อเสริมสร้างศักยภาพผู้ปฏิบัติงานให้สามารถดำเนินการคัดกรองได้อย่างมีประสิทธิภาพ</li>
+                <li>เพื่อให้การปฏิบัติงานสอดคล้องกับแนวทางการให้บริการและการส่งเสริมสิทธิคนพิการตามกฎหมาย</li>
+            </ul>
+
+            <p><strong><span class="emoji">👥</span>กลุ่มเป้าหมาย (โรงเรียนฮอดพิทยาคม):</strong></p>
+            <ul>
+                <li>ข้าราชการครู และบุคลากรทางการศึกษาของโรงเรียนฮอดพิทยาคม</li>
+                <li><u>ที่ยังไม่เคยได้รับการอบรม</u>หลักสูตรผู้ดำเนินการคัดกรองคนพิการทางการศึกษา</li>
+            </ul>
+
+            <p><strong><span class="emoji">🗓️</span>วันที่อบรม (จากผู้จัด):</strong> วันที่ 4 - 6 มิถุนายน 2568</p>
+            <p><strong><span class="emoji">💻</span>รูปแบบการอบรม:</strong> ผ่านระบบออนไลน์ (Online - Zoom Meeting)</p>
+            <p><strong><span class="emoji">💰</span>ค่าลงทะเบียน (จากผู้จัด):</strong> 800 บาทต่อคน (<strong style="color: #00796B;">โรงเรียนฮอดพิทยาคมสนับสนุนค่าลงทะเบียนให้ผู้ที่ได้รับการคัดเลือก</strong>)</p>
+
+            <div class="highlight-box">
+                <p><strong><span class="emoji">📣</span>การรับสมัคร (จากผู้จัด):</strong> เปิดรับสมัครตั้งแต่วันนี้ - 30 พฤษภาคม 2568</p>
+                <p><strong class="deadline"><span class="emoji">❗</span>สำคัญ: การสำรวจความสนใจ (โรงเรียนฮอดพิทยาคม)</strong><br>
+                เพื่อรวบรวมข้อมูลผู้สนใจเสนอผู้บริหารพิจารณาคัดเลือกเข้ารับการอบรม<br>
+                ขอความร่วมมือตอบแบบสำรวจนี้ภายใน <strong class="deadline">วันพฤหัสบดีที่ 22 พฤษภาคม 2568 (พรุ่งนี้)</strong></p>
+            </div>
+        </section>
+
+        <h3 class="section-title"><span class="emoji">🧑‍🏫</span>กรอกข้อมูลเพื่อแสดงความสนใจเข้ารับการอบรม</h3>
+        <form id="teacherForm">
+            <input type="hidden" id="rowId" name="rowId">
+            <input type="hidden" id="action" name="action" value="create">
+
+            <label for="prefix">คำนำหน้าชื่อ:<span class="required">*</span></label>
+            <select id="prefix" name="prefix" required>
+                <option value="">-- กรุณาเลือก --</option>
+                <option value="นาย">นาย</option>
+                <option value="นาง">นาง</option>
+                <option value="นางสาว">นางสาว</option>
+                <option value="ว่าที่ร้อยตรี">ว่าที่ร้อยตรี</option>
+                <option value="ว่าที่ร้อยตรีหญิง">ว่าที่ร้อยตรีหญิง</option>
+                <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
+            </select>
+            <input type="text" id="otherPrefix" name="otherPrefix" placeholder="ระบุคำนำหน้าชื่อ (กรณีเลือกอื่นๆ)" style="display:none; margin-top:8px;">
+
+            <label for="firstName">ชื่อจริง:<span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" required placeholder="เช่น สมชาย">
+
+            <label for="lastName">นามสกุล:<span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" required placeholder="เช่น ใจดี">
+
+            <label for="position">ตำแหน่ง:<span class="required">*</span></label>
+            <input type="text" id="position" name="position" required placeholder="เช่น ครู, เจ้าหน้าที่...">
+
+            <label for="academicStanding">วิทยฐานะ (ถ้ามี):</label>
+            <input type="text" id="academicStanding" name="academicStanding" placeholder="เช่น ครูชำนาญการ, ครูชำนาญการพิเศษ">
+
+            <label for="phoneNumber">เบอร์โทรศัพท์ (มือถือ):<span class="required">*</span></label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" placeholder="0812345678 (10 หลัก ไม่ต้องใส่ขีด)" required>
+
+            <label for="email">อีเมล (สำหรับการติดต่อ/รับเอกสาร):</label>
+            <input type="email" id="email" name="email" placeholder="example@hpk.ac.th หรืออีเมลส่วนตัว">
+
+            <label for="department">กลุ่มสาระการเรียนรู้/ฝ่ายงาน:<span class="required">*</span></label>
+            <input type="text" id="department" name="department" required placeholder="เช่น กลุ่มสาระฯคณิตศาสตร์, งานธุรการ">
+            
+            <h4 style="margin-top:25px; margin-bottom:15px; color:#00695C; font-size:1.1em;">คำถามสำรวจความสนใจเพิ่มเติม:</h4>
+
+            <label for="experience">ท่านมีประสบการณ์ในการทำงานหรือให้ความช่วยเหลือ นักเรียนที่มีความต้องการพิเศษ (เช่น นักเรียนพิการ, LD, ADHD, ออทิสติก) มาก่อนหรือไม่ อย่างไร? (ถ้ามี)</label>
+            <textarea id="experience" name="experience" rows="3" placeholder="อธิบายสั้นๆ เกี่ยวกับประสบการณ์ของท่าน (ถ้ามี)"></textarea>
+
+            <label for="reasonInterest">เหตุผลหลักที่ท่านสนใจเข้ารับการอบรมในครั้งนี้คืออะไร?<span class="required">*</span></label>
+            <textarea id="reasonInterest" name="reasonInterest" rows="3" required placeholder="เช่น ต้องการพัฒนาตนเอง, นำความรู้ไปช่วยเหลือนักเรียน"></textarea>
+
+            <label for="expectation">ท่านคาดหวังว่าจะได้รับความรู้หรือทักษะใดเป็นพิเศษจากการอบรมนี้?<span class="required">*</span></label>
+            <textarea id="expectation" name="expectation" rows="3" required placeholder="อธิบายสิ่งที่ท่านคาดหวัง"></textarea>
+
+            <p style="font-size: 0.9em; color: #455A64; margin-top: 15px; margin-bottom: 25px; padding:12px; background-color:#E8F5E9; border-radius:6px; border-left: 4px solid #00796B;">
+                <strong>หมายเหตุ:</strong> การกรอกข้อมูลในฟอร์มนี้เป็นการแสดงความสนใจเบื้องต้นเท่านั้น
+                โรงเรียนจะพิจารณาและแจ้งรายชื่อผู้มีสิทธิ์เข้ารับการอบรมให้ทราบอีกครั้ง
+                (ค่าลงทะเบียน 800 บาท โรงเรียนเป็นผู้รับผิดชอบสำหรับผู้ที่ได้รับการคัดเลือก)
+            </p>
+
+            <button type="submit" id="submitButton">🙋 แสดงความสนใจเข้ารับการอบรม</button>
+            <button type="button" id="clearButton" onclick="clearForm()">ล้างข้อมูล</button>
+            <div id="statusMessage"></div>
+        </form>
+
+        <section id="recordTableContainer">
+             <h3 class="section-title"><span class="emoji">📊</span>รายชื่อผู้แสดงความสนใจเข้ารับการอบรม</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ลำดับ</th>
+                        <th>ชื่อ-สกุล</th>
+                        <th>ตำแหน่ง</th>
+                        <th>กลุ่มสาระฯ/ฝ่ายงาน</th>
+                        <th>เบอร์โทร</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="recordTableBody">
+                    </tbody>
+            </table>
+        </section>
+    </div>
+
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2><span class="emoji">🗑️</span>ยืนยันการลบข้อมูล</h2>
+            <p>คุณต้องการลบข้อมูลรายการนี้ใช่หรือไม่? การกระทำนี้ไม่สามารถย้อนกลับได้</p>
+            <div class="modal-buttons" style="margin-top: 20px;">
+                <button id="confirmDeleteButton">ยืนยันการลบ</button>
+                <button onclick="closeModal()" style="background-color: #78909C;">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="form-footer">
+        <p>งานพัฒนาศักยภาพนักเรียนการจัดการเรียนการสอนแบบเรียนรวม</p>
+        <p>โรงเรียนฮอดพิทยาคม</p>
+        <p>&copy; <span id="currentYear"></span> โรงเรียนฮอดพิทยาคม</p>
+    </footer>
+
+<script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeR4wUqT1bhWIxDP3e0DKhBWS1im8ZZm3q18JDVKyAGPTKfDCO5N6sDdjZ9eaJvLwtKQ/exec';
+    const form = document.getElementById('teacherForm');
+    const submitButton = document.getElementById('submitButton');
+    const statusMessage = document.getElementById('statusMessage');
+    const recordTableBody = document.getElementById('recordTableBody');
+    const deleteModal = document.getElementById('deleteModal');
+    const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    let rowToDelete = null;
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    const prefixSelect = document.getElementById('prefix');
+    const otherPrefixInput = document.getElementById('otherPrefix');
+    prefixSelect.addEventListener('change', function() {
+        if (this.value === 'อื่นๆ') {
+            otherPrefixInput.style.display = 'block';
+            otherPrefixInput.required = true;
+            otherPrefixInput.focus();
+        } else {
+            otherPrefixInput.style.display = 'none';
+            otherPrefixInput.required = false;
+            otherPrefixInput.value = '';
+        }
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<span class="emoji">⏳</span> กำลังส่งข้อมูล...';
+        statusMessage.textContent = '⏳ กำลังบันทึกข้อมูล...';
+        statusMessage.className = 'loading';
+        statusMessage.style.display = 'block';
+
+        const formData = new FormData(form);
+        const params = new URLSearchParams();
+        for (const pair of formData) {
+            params.append(pair[0], pair[1]);
+        }
+
+        if (params.get('prefix') === 'อื่นๆ') {
+            params.set('prefix', params.get('otherPrefix'));
+        }
+        params.delete('otherPrefix'); // remove temporary field
+
+        try {
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: params,
+            });
+
+            let result;
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                result = await response.json();
+            } else {
+                const textResult = await response.text();
+                console.error("Raw non-JSON response:", textResult); // Log for debugging
+                throw new Error(`การตอบกลับจากเซิร์ฟเวอร์ไม่ใช่ JSON ที่ถูกต้อง: ${textResult.substring(0,150)}...`);
+            }
+
+            if (result.success) {
+                statusMessage.innerHTML = `<span class="emoji">✅</span> ${result.message || 'บันทึกข้อมูลสำเร็จ!'}`;
+                statusMessage.className = 'success';
+                form.reset(); // Reset form fields
+                document.getElementById('action').value = 'create'; // Reset action to create
+                document.getElementById('rowId').value = ''; // Clear rowId
+                otherPrefixInput.style.display = 'none'; // Hide otherPrefix field
+                otherPrefixInput.required = false;
+                prefixSelect.value = ''; // Reset prefix select
+                loadRecords(); // Refresh table
+            } else {
+                statusMessage.innerHTML = `<span class="emoji">⚠️</span> เกิดข้อผิดพลาด: ${result.message || 'ไม่สามารถบันทึกข้อมูลได้'}`;
+                statusMessage.className = 'error';
+            }
+        } catch (error) {
+            console.error('Form Submission Error:', error);
+            statusMessage.innerHTML = `<span class="emoji">❌</span> เกิดข้อผิดพลาดในการเชื่อมต่อ: ${error.message}`;
+            statusMessage.className = 'error';
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = '🙋 แสดงความสนใจเข้ารับการอบรม';
+            statusMessage.style.display = 'block'; // Ensure it's visible
+             setTimeout(() => { // Auto-hide message after some time
+                if(statusMessage.className !== 'loading') { // Don't hide if a new loading state started
+                   statusMessage.style.display = 'none';
+                   statusMessage.textContent = ''; // Clear text to prevent flash on next show
+                }
+            }, 7000); // Hide after 7 seconds
+        }
+    });
+
+    function clearForm() {
+        form.reset();
+        document.getElementById('action').value = 'create';
+        document.getElementById('rowId').value = '';
+        submitButton.innerHTML = '🙋 แสดงความสนใจเข้ารับการอบรม';
+        submitButton.disabled = false;
+        statusMessage.textContent = '';
+        statusMessage.style.display = 'none';
+        otherPrefixInput.style.display = 'none';
+        otherPrefixInput.required = false;
+        prefixSelect.value = '';
+        document.getElementById('firstName').focus(); // Focus on first name field
+    }
+
+    async function loadRecords() {
+        statusMessage.innerHTML = '<span class="emoji">🔄</span> กำลังโหลดข้อมูลผู้แสดงความสนใจ...';
+        statusMessage.className = 'loading';
+        statusMessage.style.display = 'block';
+        recordTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">กำลังโหลดข้อมูล...</td></tr>';
+
+        try {
+            const response = await fetch(`${SCRIPT_URL}?action=read`);
+            let result;
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                result = await response.json();
+            } else {
+                const textResult = await response.text();
+                console.error("Raw non-JSON response (loadRecords):", textResult);
+                throw new Error(`การตอบกลับจากเซิร์ฟเวอร์ไม่ใช่ JSON ที่ถูกต้อง: ${textResult.substring(0,150)}...`);
+            }
+
+            if (result.success) {
+                recordTableBody.innerHTML = ''; // Clear previous records
+                if (result.data.length === 0) {
+                     recordTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">ยังไม่มีผู้แสดงความสนใจ</td></tr>';
+                } else {
+                    result.data.forEach((row, index) => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${row.prefix ? row.prefix + ' ' : ''}${row.firstName} ${row.lastName}</td>
+                            <td>${row.position}</td>
+                            <td>${row.department}</td>
+                            <td>${row.phoneNumber}</td>
+                            <td class="action-buttons">
+                                <button class="edit-btn" onclick="editRecord('${row.id}')"><span class="emoji">✏️</span> แก้ไข</button>
+                                <button class="delete-btn" onclick="openDeleteModal('${row.id}')"><span class="emoji">🗑️</span> ลบ</button>
+                            </td>
+                        `;
+                        recordTableBody.appendChild(tr);
+                    });
+                }
+                statusMessage.innerHTML = '<span class="emoji">✔️</span> โหลดข้อมูลสำเร็จแล้ว';
+                statusMessage.className = 'success';
+                setTimeout(() => { // Auto-hide success message
+                    if(statusMessage.className === 'success') { // Check if it's still the same message
+                        statusMessage.style.display = 'none';
+                        statusMessage.textContent = '';
+                    }
+                }, 3000);
+            } else {
+                recordTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">ไม่สามารถโหลดข้อมูลได้</td></tr>';
+                statusMessage.innerHTML = `<span class="emoji">⚠️</span> เกิดข้อผิดพลาด: ${result.message || 'ไม่สามารถโหลดข้อมูลได้'}`;
+                statusMessage.className = 'error';
+            }
+        } catch (error) {
+            console.error('Error loading records:', error);
+            recordTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;">เกิดข้อผิดพลาดในการโหลด: ${error.message}</td></tr>`;
+            statusMessage.innerHTML = `<span class="emoji">❌</span> เกิดข้อผิดพลาดในการโหลด: ${error.message}`;
+            statusMessage.className = 'error';
+        }
+    }
+
+    async function editRecord(rowIdToEdit) {
+        statusMessage.innerHTML = '<span class="emoji">🔄</span> กำลังโหลดข้อมูลสำหรับแก้ไข...';
+        statusMessage.className = 'loading';
+        statusMessage.style.display = 'block';
+        try {
+            const response = await fetch(`${SCRIPT_URL}?action=readOne&id=${rowIdToEdit}`);
+            let result;
+            const contentType = response.headers.get("content-type");
+
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                result = await response.json();
+            } else {
+                const textResult = await response.text();
+                console.error("Raw non-JSON response (editRecord):", textResult);
+                throw new Error(`การตอบกลับจากเซิร์ฟเวอร์ไม่ใช่ JSON ที่ถูกต้อง: ${textResult.substring(0,150)}...`);
+            }
+
+            if (result.success && result.data) {
+                const data = result.data;
+                form.reset(); // Reset form first
+                otherPrefixInput.style.display = 'none';
+                otherPrefixInput.required = false;
+
+                document.getElementById('rowId').value = data.id;
+                document.getElementById('action').value = 'update';
+
+                const standardPrefixes = Array.from(prefixSelect.options).map(opt => opt.value);
+                if (standardPrefixes.includes(data.prefix)) {
+                    prefixSelect.value = data.prefix;
+                } else if (data.prefix && data.prefix.trim() !== '') { // Check if prefix exists and is not just whitespace
+                    prefixSelect.value = 'อื่นๆ';
+                    otherPrefixInput.value = data.prefix;
+                    otherPrefixInput.style.display = 'block';
+                    otherPrefixInput.required = true;
+                } else {
+                    prefixSelect.value = ''; // No prefix or empty
+                }
+
+                document.getElementById('firstName').value = data.firstName || '';
+                document.getElementById('lastName').value = data.lastName || '';
+                document.getElementById('position').value = data.position || '';
+                document.getElementById('academicStanding').value = data.academicStanding || '';
+                document.getElementById('phoneNumber').value = data.phoneNumber || '';
+                document.getElementById('email').value = data.email || '';
+                document.getElementById('department').value = data.department || '';
+                document.getElementById('experience').value = data.experience || '';
+                document.getElementById('reasonInterest').value = data.reasonInterest || '';
+                document.getElementById('expectation').value = data.expectation || '';
+
+                submitButton.innerHTML = '<span class="emoji">💾</span> อัปเดตข้อมูล';
+                statusMessage.innerHTML = '<span class="emoji">📝</span> กรุณาแก้ไขข้อมูล แล้วกดปุ่มอัปเดต (เลื่อนลงเพื่อดูข้อมูลทั้งหมด)';
+                statusMessage.className = 'loading'; // Use loading for info color, or create a new 'info' class
+                statusMessage.style.display = 'block';
+                window.scrollTo({ top: form.offsetTop - 20, behavior: 'smooth' }); // Scroll to form
+                document.getElementById('firstName').focus(); // Focus on first name field
+            } else {
+                statusMessage.innerHTML = `<span class="emoji">⚠️</span> ไม่พบข้อมูลหรือเกิดข้อผิดพลาด: ${result.message || 'ไม่พบข้อมูล'}`;
+                statusMessage.className = 'error';
+            }
+        } catch (error) {
+            console.error('Error fetching record for edit:', error);
+            statusMessage.innerHTML = `<span class="emoji">❌</span> เกิดข้อผิดพลาด: ${error.message}`;
+            statusMessage.className = 'error';
+        }
+    }
+
+    function openDeleteModal(id) {
+        rowToDelete = id;
+        deleteModal.style.display = 'block';
+    }
+
+    function closeModal() {
+        deleteModal.style.display = 'none';
+        rowToDelete = null;
+    }
+
+    confirmDeleteButton.onclick = async function() {
+        if (rowToDelete) {
+            confirmDeleteButton.disabled = true;
+            confirmDeleteButton.textContent = "กำลังลบ...";
+            statusMessage.innerHTML = '<span class="emoji">⏳</span> กำลังลบข้อมูล...';
+            statusMessage.className = 'loading';
+            statusMessage.style.display = 'block';
+
+            const params = new URLSearchParams();
+            params.append('action', 'delete');
+            params.append('rowId', rowToDelete);
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: params
+                });
+                let result;
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    result = await response.json();
+                } else {
+                    const textResult = await response.text();
+                    console.error("Raw non-JSON response (deleteRecord):", textResult);
+                    throw new Error(`การตอบกลับจากเซิร์ฟเวอร์ไม่ใช่ JSON ที่ถูกต้อง: ${textResult.substring(0,150)}...`);
+                }
+
+                if (result.success) {
+                    statusMessage.innerHTML = `<span class="emoji">🗑️</span> ${result.message || 'ลบข้อมูลสำเร็จ!'}`;
+                    statusMessage.className = 'success';
+                    loadRecords(); // Refresh table
+                } else {
+                    statusMessage.innerHTML = `<span class="emoji">⚠️</span> เกิดข้อผิดพลาดในการลบ: ${result.message || 'ไม่สามารถลบข้อมูลได้'}`;
+                    statusMessage.className = 'error';
+                }
+            } catch (error) {
+                console.error('Error deleting record:', error);
+                statusMessage.innerHTML = `<span class="emoji">❌</span> เกิดข้อผิดพลาด: ${error.message}`;
+                statusMessage.className = 'error';
+            } finally {
+                closeModal(); // Close modal regardless of outcome
+                rowToDelete = null;
+                confirmDeleteButton.disabled = false;
+                confirmDeleteButton.textContent = "ยืนยันการลบ";
+                 setTimeout(() => { // Auto-hide message
+                    if(statusMessage.className !== 'loading') {
+                       statusMessage.style.display = 'none';
+                       statusMessage.textContent = '';
+                    }
+                }, 7000);
+            }
+        }
+    }
+
+    // Close modal if clicked outside of it
+    window.onclick = function(event) {
+        if (event.target == deleteModal) {
+            closeModal();
+        }
+    }
+    // Load records when the page loads
+    document.addEventListener('DOMContentLoaded', loadRecords);
+</script>
+</body>
+</html>
